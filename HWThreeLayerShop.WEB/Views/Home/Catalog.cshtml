@@ -1,0 +1,29 @@
+﻿
+@model CatalogViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Catalog";
+}
+
+<nav class="col-xl-2 border-solid">
+    <h2>Категории</h2>
+    <ul>
+        @foreach (var catalog in Model.ListOfCatalog)
+        {
+            <li>@Html.ActionLink(catalog.Name, "Catalog", "Home", new { CatalogID = catalog.Id })</li>
+        }
+    </ul>
+</nav>
+
+<article class="col-xl-10 border-dashed">
+    <table class="table-bordered padding-3-1" cellpadding="5">
+        <thead>
+            <tr><td>Name</td><td>Price</td></tr>
+        </thead>
+        @foreach (var good in Model.ListOfGood)
+        {
+            <tr><td>@good.Name</td><td>@good.Price</td></tr>
+        }
+    </table>
+
+</article>
